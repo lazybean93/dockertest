@@ -8,7 +8,7 @@ docker build --pull --rm -f "Dockerfile" -t test:latest "."
 
 Run happens with
 ```
-docker run --rm -it -p 2121:22 -p 6001:5901/tcp test:latest"
+docker run --rm -it -p 2121:22 -p 6001:5901/tcp test:latest
 ```
 (Keep attention to the port forwarding.)
 
