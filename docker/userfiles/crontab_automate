@@ -1,1 +1,1 @@
-@reboot export USER=automate; tightvncserver
+@reboot export USER=automate && mkdir .boot && tightvncserver > .boot/tightvncserver.txt 2>&1 && git pull > .boot/git_pull.txt 2>&1

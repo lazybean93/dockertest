@@ -1,1 +1,1 @@
-@reboot export USER=root; /usr/sbin/sshd
+@reboot /usr/sbin/sshd
