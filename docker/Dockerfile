@@ -1,7 +1,20 @@
 FROM debian
 
-#general packages
-RUN apt-get update && apt-get install -y nano htop locales cron procps
+#ABCDEFGHIJKLMNOPQRSTUVWXYZ
+RUN apt-get update && apt-get install -y \
+    cron \
+    firefox-esr \
+    git \
+    locales \
+    nano \
+    htop \
+    openbox \
+    openssh-server \
+    procps \
+    python3-pip \
+    tightvncserver \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 RUN service cron start
 
 #set locales
@@ -14,24 +27,17 @@ RUN sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
 RUN useradd -rm -d /home/automate -s /bin/bash -g root -u 1000 automate
 RUN echo 'root:automate' | chpasswd
 RUN echo 'automate:automate' | chpasswd
-RUN echo "alias tsp=ts" >> /home/automate/.bashrc 
 
 #setup ssh
-RUN apt-get install -y openssh-server
 RUN service ssh start
 EXPOSE 22
 
-#setup wm
-RUN apt-get install -y openbox firefox-esr
 
 #setup vnc server
-RUN apt-get install -y tightvncserver
 EXPOSE 5901
 
 #setup selenium
-RUN apt-get install -y python3-pip
 RUN pip install --break-system-packages selenium
-RUN apt-get install -y wget
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
 RUN tar -xf geckodriver-v0.33.0-linux64.tar.gz
 RUN mv geckodriver /usr/bin
@@ -43,13 +49,13 @@ RUN cd ts-1.0.2 && make install
 RUN rm *.tar.gz && rm -r ts-1.0.2
 
 #clone git repo
-RUN apt-get install -y git
 #USER automate
 RUN git clone https://github.com/lazybean93/automate.git && cp -r automate/* /home/automate/
 RUN chown -R automate:root /home/automate
 
 #copy files to image
-ADD --chown=automate:root userfiles /home/automate
+COPY userfiles /home/automate
+RUN chown -R automate:root /home/automate
 ADD start.sh crontab_root /
 
 RUN FILE=/home/automate/crontab_automate && crontab -u automate $FILE && rm $FILE
