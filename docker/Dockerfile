@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     tightvncserver \
     wget \
+    wmctrl \
     && rm -rf /var/lib/apt/lists/*
 
 #set locales
@@ -36,12 +37,19 @@ EXPOSE 5901
 #setup selenium
 RUN pip install --break-system-packages selenium \
     && wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz \
-    && tar -xf geckodriver-v0.33.0-linux64.tar.gz && mv geckodriver /usr/bin
+    && tar -xf geckodriver-v0.33.0-linux64.tar.gz \
+    && mv geckodriver /usr/bin
 
 #setup taskspooler
-RUN wget https://viric.name/soft/ts/ts-1.0.2.tar.gz && tar -xf ts-1.0.2.tar.gz \
-    && cd ts-1.0.2  && cat Makefile | sed 's/ts/tsp/g;s/tsp.1 /ts.1 /g' > M \
-    && mv M Makefile && make install && cd / && rm *.tar.gz && rm -r ts-1.0.2
+RUN wget https://viric.name/soft/ts/ts-1.0.2.tar.gz \
+    && tar -xf ts-1.0.2.tar.gz \
+    && cd ts-1.0.2 \
+    && cat Makefile | sed 's/ts/tsp/g;s/tsp.1 /ts.1 /g' > M \
+    && mv M Makefile \
+    && make install \
+    && cd / \
+    && rm *.tar.gz \
+    && rm -r ts-1.0.2
 
 #clone git repo
 RUN git clone https://github.com/lazybean93/automate.git \
@@ -54,12 +62,17 @@ RUN git clone https://github.com/lazybean93/automate.git \
 
 #copy files to image
 COPY userfiles /home/automate
-RUN chown -R automate:root /home/automate && chmod 0600 /home/automate/.vnc/passwd
+RUN chown -R automate:root /home/automate\
+    && chmod 0600 /home/automate/.vnc/passwd
 ADD /start.sh /
 
 #cronjobs
-RUN FILE=/home/automate/crontab_automate && crontab -u automate $FILE && rm $FILE
-RUN echo "@reboot /usr/sbin/sshd" > FILE && crontab FILE && rm FILE
+RUN FILE=/home/automate/crontab_automate \
+    && crontab -u automate $FILE \
+    && rm $FILE
+RUN echo "@reboot /usr/sbin/sshd" > FILE \
+    && crontab FILE \
+    && rm FILE
 
 USER root
 CMD [ "sh", "/start.sh" ]
