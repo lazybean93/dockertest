@@ -1,0 +1,1 @@
+env | grep SSH_CONNECTION
