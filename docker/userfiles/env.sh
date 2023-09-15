@@ -1,1 +1,1 @@
-env | grep SSH_CONNECTION
+env | grep SSH_CONNECTION | sed 's/ /\n/g' | tail -n2 | head -n1 | sed 's/\./\n/g' | tail -n1
