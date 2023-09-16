@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     git \
     locales \
     nano \
+    nmap \
     htop \
     openbox \
     openssh-server \
