@@ -1,6 +1,7 @@
 FROM debian
 
 RUN apt-get update && apt-get install -y \
+    bc \
     cron \
     firefox-esr \
     git \
@@ -15,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     tightvncserver \
     wget \
     wmctrl \
+    xxd \
     && rm -rf /var/lib/apt/lists/*
 
 #set locales
