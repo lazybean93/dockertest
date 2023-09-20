@@ -1,7 +1,7 @@
 export USER=automate
 export FOLDER="/home/""$USER""/"
 export FOLDER_BOOT="$FOLDER"".boot/"
-mkdir "$FOLDER"
+mkdir "$FOLDER_BOOT"
 tightvncserver > "$FOLDER_BOOT""tightvncserver.txt" 2>&1
 git pull > "$FOLDER_BOOT""git_pull.txt" 2>&1
 while [ $(bc <<< "$(sh "$FOLDER""load.sh" 1) < 0.05") -eq 0 ]; do
