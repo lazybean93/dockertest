@@ -1,1 +1,1 @@
-@reboot bash reboot.sh > reboot.log
+@reboot bash reboot.sh > reboot.log 2>&1
