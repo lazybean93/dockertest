@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     htop \
     openbox \
     openssh-server \
+    ping \
     procps \
     python3-pip \
     tightvncserver \
