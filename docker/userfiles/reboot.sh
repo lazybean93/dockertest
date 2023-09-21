@@ -4,6 +4,7 @@ export FOLDER_BOOT="$FOLDER"".boot/"
 mkdir "$FOLDER_BOOT"
 tightvncserver > "$FOLDER_BOOT""tightvncserver.txt" 2>&1
 git pull > "$FOLDER_BOOT""git_pull.txt" 2>&1
+sleep 300
 sh "$FOLDER""ping.sh"
 #while [ $(bc <<< "$(sh "$FOLDER""load.sh" 1) < 0.1") -eq 0 ]; do
 #    sleep $(echo $(sh "$FOLDER""random.sh")*30 | bc);
