@@ -7,12 +7,12 @@ RUN apt-get update && apt-get install -y \
     firefox-esr \
     git \
     locales \
+    iputils-ping \
     nano \
     nmap \
     htop \
     openbox \
     openssh-server \
-    ping \
     procps \
     python3-pip \
     tightvncserver \
