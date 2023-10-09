@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     firefox-esr \
     git \
     locales \
+    iputils-ping \
     nano \
     nmap \
     htop \
