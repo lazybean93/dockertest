@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     firefox-esr \
     git \
     locales \
+    lxde \
     iputils-ping \
     nano \
     nmap \
@@ -18,7 +19,6 @@ RUN apt-get update && apt-get install -y \
     tightvncserver \
     wget \
     wmctrl \
-    xvfb \
     xxd \
     && rm -rf /var/lib/apt/lists/*
 
