@@ -2,7 +2,7 @@
 SCRIPT=$(readlink -f $0)
 # Absolute path this script is in. /home/user/bin
 SCRIPTPATH=`dirname $SCRIPT`
-Count=300
+Count=10
 MAX_I=$(($Count-1))
 NAME="generalworker_"
 FILE="/home/automate/id.txt"
