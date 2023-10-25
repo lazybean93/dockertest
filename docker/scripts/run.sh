@@ -25,7 +25,7 @@ for i in $(seq 0 $MAX_I); do
 		-i \
 		-t \
 		--name "$NAME""$(printf %03d $i)" \
-		--mount type=bind,source="$(pwd)"/target,target=/home/automate/Downloads \
+		--mount type=bind,source="$(pwd)"/Downloads,target=/home/automate/Downloads \
 		--rm \
 		-d \
 		-p $((2200+$i)):22 \
