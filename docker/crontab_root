@@ -1,2 +1,2 @@
 @reboot /usr/sbin/sshd
-@reboot sh -c "sleep 10; chown -R automate:root /home/automate/Downloads > /home/automate/mountDownloads.txt"
+@reboot tsp chown -R automate:root /home/automate/Downloads
