@@ -15,7 +15,7 @@ for i in $(seq 0 $MAX_I); do
 	sleep 0.1
 done
 for i in $(seq $MAX_I); do
-	docker exec generalworker_$(printf %03d $i) sh -c "nmap -sP 172.17.0.1/24 > /home/automate/ip.txt"
+	docker exec generalworker_$(printf %03d $i) sh -c "echo $i > /home/automate/id.txt"
 done
 #while [ $(echo $(sh "$SCRIPTPATH"/../userfiles/load.sh 1)*100 | bc -l | sed 's/\./\n/g' | head -n1) -lt 10 ]; do
 #	date;
