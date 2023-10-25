@@ -25,7 +25,7 @@ for i in $(seq 0 $MAX_I); do
 		-i \
 		-t \
 		--name "$NAME""$(printf %03d $i)" \
-		-v "$(pwd)"/target:/app:z \
+		-v "$(pwd)"/target:/home/automate/Downloads:z \
 		--rm \
 		-d \
 		-p $((2200+$i)):22 \
