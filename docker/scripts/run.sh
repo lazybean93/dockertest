@@ -10,7 +10,7 @@ FILE="/home/automate/id.txt"
 cd "$SCRIPTPATH""/.."
 
 echo "----"
-ls
+pwd
 echo "----"
 
 for i in $(seq 0 $MAX_I); do
