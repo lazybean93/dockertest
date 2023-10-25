@@ -35,5 +35,5 @@ for i in $(seq 0 $MAX_I); do
 done
 
 for i in $(seq 0 $MAX_I); do
-	docker exec "$NAME""$(printf %03d $i)" sh -c "chown -R automate /home/automate/Downloads; echo $i > $FILE; echo $MAX_I >> $FILE;"
+	docker exec "$NAME""$(printf %03d $i)" sh -c "echo $i > $FILE; echo $MAX_I >> $FILE;"
 done
