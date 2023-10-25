@@ -3,7 +3,7 @@ SCRIPT=$(readlink -f $0)
 # Absolute path this script is in. /home/user/bin
 SCRIPTPATH=`dirname $SCRIPT`
 
-for i in $(seq 1 30); do
+for i in $(seq 1 10); do
 	#--rm = automatically remove container when exists
 	# -i  = keep stdin open
 	# -t  = allocate pseudo tty
