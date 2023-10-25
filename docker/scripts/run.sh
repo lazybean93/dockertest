@@ -9,6 +9,10 @@ FILE="/home/automate/id.txt"
 
 cd "$SCRIPTPATH""/.."
 
+echo "----"
+ls
+echo "----"
+
 for i in $(seq 0 $MAX_I); do
 	#--name = "$NAME""$i"
 	#--rm = automatically remove container when exists
