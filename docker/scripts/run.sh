@@ -7,6 +7,8 @@ MAX_I=$(($Count-1))
 NAME="generalworker_"
 FILE="/home/automate/id.txt"
 
+cd "$SCRIPTPATH""/.."
+
 for i in $(seq 0 $MAX_I); do
 	#--name = "$NAME""$i"
 	#--rm = automatically remove container when exists
