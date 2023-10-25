@@ -2,7 +2,8 @@
 SCRIPT=$(readlink -f $0)
 # Absolute path this script is in. /home/user/bin
 SCRIPTPATH=`dirname $SCRIPT`
-MAX_I=9
+Count=300
+MAX_I=$(($Count-1))
 NAME="generalworker_"
 FILE="/home/automate/id.txt"
 
@@ -18,6 +19,6 @@ for i in $(seq 0 $MAX_I); do
 	sleep 0.1
 done
 
-for i in $(seq $MAX_I); do
+for i in $(seq 0 $MAX_I); do
 	docker exec "$NAME""$(printf %03d $i)" sh -c "echo $i > $FILE; echo $MAX_I >> $FILE;"
 done
