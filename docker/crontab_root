@@ -1,2 +1,1 @@
 @reboot /usr/sbin/sshd
-@reboot tsp chown -R automate:root /home/automate/Downloads
