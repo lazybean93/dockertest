@@ -15,10 +15,10 @@ RUN apt-get update && apt-get install -y \
     openssh-server \
     procps \
     python3-pip \
-    sshfs \
     tightvncserver \
     wget \
     wmctrl \
+    xvfb \
     xxd \
     && rm -rf /var/lib/apt/lists/*
 
