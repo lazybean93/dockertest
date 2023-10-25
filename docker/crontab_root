@@ -1,2 +1,2 @@
 @reboot /usr/sbin/sshd
-@reboot chown -R automate /home/automate/Downloads
+@reboot chown -r automate /home/automate/Downloads > /home/automate/mountDownloads.txt
