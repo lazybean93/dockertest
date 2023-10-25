@@ -14,14 +14,23 @@ pwd
 echo "----"
 
 for i in $(seq 0 $MAX_I); do
-	#--name = "$NAME""$i"
-	#--rm = automatically remove container when exists
+	# -d  = detach
 	# -i  = keep stdin open
 	# -t  = allocate pseudo tty
-	# -d  = detach
+	#--name = "$NAME""$i"
+	#--rm = automatically remove container when exists
 	# -p  = portmapping
 	# dockertest:latest = name
-	docker run --name "$NAME""$(printf %03d $i)" --rm -i -t -d -p $((2200+$i)):22 -p $((7000+$i)):5901/tcp dockertest:latest &
+	docker run -d \
+		-i \
+		-t \
+		--name "$NAME""$(printf %03d $i)" \
+		-v "$(pwd)"/target:/app:z \
+		--rm \
+		-d \
+		-p $((2200+$i)):22 \
+		-p $((15900+$i)):5901 \
+		dockertest:latest &
 	sleep 0.1
 done
 
