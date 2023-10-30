@@ -16,8 +16,6 @@ RUN apt-get update && apt-get install -y \
     tightvncserver \
     wget \
     wmctrl \
-    xvfb \
-    xxd \
     && rm -rf /var/lib/apt/lists/*
 
 #set locales
