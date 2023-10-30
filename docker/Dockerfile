@@ -8,11 +8,8 @@ RUN apt-get update && apt-get install -y \
     git \
     locales \
     lxde \
-    iputils-ping \
     nano \
-    nmap \
     htop \
-    openbox \
     openssh-server \
     procps \
     python3-pip \
