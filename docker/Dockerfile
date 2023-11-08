@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     expect \
     firefox-esr \
     git \
+    ifstat \
     locales \
     lxde \
     nano \
