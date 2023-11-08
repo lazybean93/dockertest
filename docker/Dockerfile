@@ -21,10 +21,13 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 #set locales
+ENV TZ=Europe/Berlin
 ENV LANG=de_DE.UTF-8
 RUN sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
-    update-locale LANG=$LANG
+    update-locale LANG=$LANG && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone
 
 #set Users
 RUN useradd -rm -d /home/automate -s /bin/bash -g root -u 1000 automate \
