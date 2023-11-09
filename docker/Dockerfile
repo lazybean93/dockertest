@@ -79,7 +79,12 @@ RUN FILE=/home/automate/crontab_automate \
     && rm $FILE
 RUN echo "@reboot /usr/sbin/sshd" > FILE \
     && crontab FILE \
-    && rm FILE
+    && rm file
 
 USER root
-CMD [ "sh", "/start.sh" ]
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+ 
+# Run the command on container startup
+CMD cron && tail -f /var/log/cron.log
+#CMD [ "sh", "/start.sh" ]
