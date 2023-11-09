@@ -79,7 +79,7 @@ RUN FILE=/home/automate/crontab_automate \
     && rm $FILE
 RUN echo "@reboot /usr/sbin/sshd" > FILE \
     && crontab FILE \
-    && rm file
+    && rm FILE
 
 USER root
 # Create the log file to be able to run tail
