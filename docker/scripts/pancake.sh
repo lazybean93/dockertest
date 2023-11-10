@@ -17,4 +17,4 @@ while [ -z "$(docker ps | grep Pancake)" ]; do
         sleep 1
 done
 sleep 2
-docker exec --user automate "Pancake" sh -c "sh /home/automate/pancake/pancake_cron.sh"
+docker exec "Pancake" sh -c "sh /home/automate/pancake/pancake_cron.sh"
