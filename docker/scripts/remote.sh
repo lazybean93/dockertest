@@ -8,13 +8,13 @@ cd "$SCRIPTPATH";
 docker run -d \
         -i \
         -t \
-        --name "Pancake" \
+        --name "Remote" \
         --rm \
-        -p 50122:22 \
-        -p 56001:5901 \
+        -p 50022:22 \
+        -p 55901:5901 \
         dockertest:latest &
-while [ -z "$(docker ps | grep Pancake)" ]; do
+while [ -z "$(docker ps | grep Remote)" ]; do
         sleep 1
 done
-sleep 2
-docker exec --user automate "Pancake" sh -c "sh /home/automate/pancake/pancake_cron.sh"
+#sleep 2
+#docker exec --user automate "Remote" sh -c "sh /home/automate/pancake/pancake_cron.sh"
