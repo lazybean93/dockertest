@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     git \
     ifstat \
     locales \
+    locales-all \
     lxde \
     nano \
     htop \
@@ -22,8 +23,11 @@ RUN apt-get update && apt-get install -y \
 
 #set locales
 ENV TZ=Europe/Berlin
+ENV LC_ALL=de_DE.UTF-8
 ENV LANG=de_DE.UTF-8
-RUN sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
+ENV LANGUAGE=de_DE.UTF-8
+RUN locale-gen $LANG && \
+    sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=$LANG && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
