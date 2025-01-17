@@ -28,6 +28,7 @@ ENV LANG=de_DE.UTF-8
 ENV LANGUAGE=de_DE.UTF-8
 RUN locale-gen $LANG && \
     sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
+    sed "s/us/de/" /etc/default/keyboard && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=$LANG && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
