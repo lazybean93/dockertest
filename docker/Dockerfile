@@ -31,7 +31,8 @@ RUN locale-gen $LANG && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=$LANG && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
-    echo $TZ > /etc/timezone
+    echo $TZ > /etc/timezone \
+    dpkg-reconfigure --frontend=noninteractive keyboard-configuration
 
 #set Users
 RUN useradd -rm -d /home/automate -s /bin/bash -g root -u 1000 automate \
