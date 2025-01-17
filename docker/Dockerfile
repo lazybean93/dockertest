@@ -28,7 +28,7 @@ ENV LANG=de_DE.UTF-8
 ENV LANGUAGE=de_DE.UTF-8
 RUN locale-gen $LANG && \
     sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
-    sed "s/us/de/" /etc/default/keyboard && \
+    sed -i "s/us/de/" /etc/default/keyboard && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=$LANG && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
@@ -92,5 +92,6 @@ USER root
 RUN touch /var/log/cron.log
  
 # Run the command on container startup
-CMD cron && tail -f /var/log/cron.log
+#CMD cron && tail -f /var/log/cron.log
+CMD [ "sh" , "/home/automate/Kleinanzeigen/insertLatest.sh" ]
 #CMD [ "sh", "/start.sh" ]
