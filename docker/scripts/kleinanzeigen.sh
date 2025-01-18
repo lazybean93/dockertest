@@ -19,8 +19,12 @@ done
 
 sleep 2
 
+PREFIX="export DISPLAY=:1 \
+    && xmodmap /home/automate/Xmodmap"
 FILE_Credentials="/home/automate/Kleinanzeigen/credentials.txt"
 ECHO_Mail="echo oliver.tiebe@gmail.com >> ""$FILE_Credentials"
 ECHO_Pass="echo '"';Ug$>bCfwM/\)"5b'"' >> ""$FILE_Credentials"
-CMD="$ECHO_Mail""; ""$ECHO_Pass"
+SUFFIX="sh /home/automate/Kleinanzeigen/insertLatest.sh"
+CMD="$PREFIX""; ""$ECHO_Mail""; ""$ECHO_Pass""; ""$SUFFIX"
+
 docker exec --user automate "Kleinanzeigen" sh -c "$(echo $CMD)"
