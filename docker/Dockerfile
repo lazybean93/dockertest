@@ -15,25 +15,22 @@ RUN apt-get update && apt-get install -y \
     openssh-server \
     procps \
     python3-pip \
-    tightvncserver \
     wget \
     wmctrl \
     xautomation \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y tightvncserver \
+    && rm -rf /var/lib/apt/lists/*
+
 #set locales
 ENV TZ=Europe/Berlin
-ENV LC_ALL=de_DE.UTF-8
 ENV LANG=de_DE.UTF-8
-ENV LANGUAGE=de_DE.UTF-8
-RUN locale-gen $LANG && \
-    sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
-    sed -i "s/us/de/" /etc/default/keyboard && \
+RUN sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=$LANG && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
-    echo $TZ > /etc/timezone \
-    dpkg-reconfigure --frontend=noninteractive keyboard-configuration
+    echo $TZ > /etc/timezone
 
 #set Users
 RUN useradd -rm -d /home/automate -s /bin/bash -g root -u 1000 automate \
@@ -92,6 +89,5 @@ USER root
 RUN touch /var/log/cron.log
  
 # Run the command on container startup
-#CMD cron && tail -f /var/log/cron.log
-CMD [ "sh" , "/home/automate/Kleinanzeigen/insertLatest.sh" ]
+CMD cron && tail -f /var/log/cron.log
 #CMD [ "sh", "/start.sh" ]
