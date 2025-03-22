@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     ifstat \
     locales \
     locales-all \
+    lxde-core \
     nano \
     htop \
     openssh-server \
@@ -17,9 +18,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     wmctrl \
     xautomation \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y tightvncserver \
+    tightvncserver \
     && rm -rf /var/lib/apt/lists/*
 
 #set locales
