@@ -10,6 +10,11 @@ services:
   immich-server:
     container_name: kleinanzeigen_server
     image: dockertest
+    volumes:
+      # Do not edit the next line. If you want to change the media storage location on your system, edit the value of UPLOAD_LOCATION in the .env file
+      - ${CREDENTIALS_LOCATION}:/home/automate/credentials
+    env_file:
+      - .env
     ports:
       - '50222:22'
       - '56101:5901'
