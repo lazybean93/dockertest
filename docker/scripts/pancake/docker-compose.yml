@@ -1,0 +1,18 @@
+#
+# WARNING: Make sure to use the docker-compose.yml of the current release:
+#
+# The compose file on main may not be compatible with the latest release.
+#
+
+name: pancake
+
+services:
+  immich-server:
+    container_name: pancake_server
+    image: dockertest
+    ports:
+      - '50122:22'
+      - '56001:5901'
+    restart: always
+    healthcheck:
+      disable: false

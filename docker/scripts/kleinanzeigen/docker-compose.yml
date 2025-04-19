@@ -1,0 +1,18 @@
+#
+# WARNING: Make sure to use the docker-compose.yml of the current release:
+#
+# The compose file on main may not be compatible with the latest release.
+#
+
+name: kleinanzeigen
+
+services:
+  immich-server:
+    container_name: kleinanzeigen_server
+    image: dockertest
+    ports:
+      - '50222:22'
+      - '56101:5901'
+    restart: always
+    healthcheck:
+      disable: false
