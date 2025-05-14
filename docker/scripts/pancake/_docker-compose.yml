@@ -7,7 +7,7 @@
 name: pancake
 
 services:
-  immich-server:
+  pancake-server:
     container_name: pancake_server
     image: dockertest
     ports:
@@ -16,3 +16,4 @@ services:
     restart: always
     healthcheck:
       disable: false
+    command: /bin/sh -c "cron && sh /home/automate/pancake/pancake_cron.sh && tail -f /var/log/cron.log"

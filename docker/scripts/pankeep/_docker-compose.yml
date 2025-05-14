@@ -7,7 +7,7 @@
 name: pankeep
 
 services:
-  immich-server:
+  pankeep-server:
     container_name: pankeep_server
     image: dockertest
     ports:

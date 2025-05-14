@@ -7,7 +7,7 @@
 name: kleinanzeigen
 
 services:
-  immich-server:
+  kleinanzeigen-server:
     container_name: kleinanzeigen_server
     image: dockertest
     volumes:
